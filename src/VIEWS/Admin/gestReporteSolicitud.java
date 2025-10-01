@@ -34,7 +34,6 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
     dateFin.setFormats("dd/MM/yyyy");
 }
     
-    // Getters para que el controller pueda acceder a los componentes
     public javax.swing.JButton getBtnGenerarReporte() {
         return btnGenerarReporte;
     }
@@ -89,7 +88,7 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
         txtTipoSolicitud.setText("Tipo de Solicitud:");
 
         cmbTipoSolicitud.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitud de Hardware", "Solicitud de Software y Aplicaciones", "Solicitud de Redes y Conectividad", "Solicitud de Cuentas y Accesos", "Solicitud de Consultas Generales", "Todas las Solicitudes" }));
+        cmbTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitud de Hardware", "Solicitud de Software y Aplicaciones", "Solicitud de Redes y Conectividad", "Solicitud de Cuentas y Accesos", "Solicitud de Consulta General", "Todas las Solicitudes" }));
 
         btnGenerarReporte.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnGenerarReporte.setText("Generar Reporte");

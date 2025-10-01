@@ -122,7 +122,7 @@
             <StringItem index="1" value="Solicitud de Software y Aplicaciones"/>
             <StringItem index="2" value="Solicitud de Redes y Conectividad"/>
             <StringItem index="3" value="Solicitud de Cuentas y Accesos"/>
-            <StringItem index="4" value="Solicitud de Consultas Generales"/>
+            <StringItem index="4" value="Solicitud de Consulta General"/>
             <StringItem index="5" value="Todas las Solicitudes"/>
           </StringArray>
         </Property>

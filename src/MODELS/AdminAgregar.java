@@ -77,26 +77,7 @@ public class AdminAgregar {
             default: return 3; // Por defecto Usuario
         }
     }
-    
-//    private String hashContrasena(String contrasena) {
-//        try {
-//            MessageDigest md = MessageDigest.getInstance("SHA-256");
-//            byte[] hash = md.digest(contrasena.getBytes());
-//            StringBuilder hexString = new StringBuilder();
-//            
-//            for (byte b : hash) {
-//                String hex = Integer.toHexString(0xff & b);
-//                if (hex.length() == 1) hexString.append('0');
-//                hexString.append(hex);
-//            }
-//            
-//            return hexString.toString();
-//            
-//        } catch (NoSuchAlgorithmException e) {
-//            throw new RuntimeException("Error al encriptar contraseña", e);
-//        }
-//    }
-    
+
     public void limpiarCampos(javax.swing.JTextField... campos) {
         for (javax.swing.JTextField campo : campos) {
             campo.setText("");

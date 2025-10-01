@@ -35,11 +35,6 @@ public class AdminReporteSolicitud {
     }
     
     public DatosReporte generarReporte(Date fechaInicio, Date fechaFin, String tipoSolicitud) {
-        System.out.println("=== INICIANDO GENERACIÓN DE REPORTE ===");
-        System.out.println("Fecha inicio: " + fechaInicio);
-        System.out.println("Fecha fin: " + fechaFin);
-        System.out.println("Tipo solicitud: " + tipoSolicitud);
-        
         String sql = construirQuery(fechaInicio, fechaFin, tipoSolicitud);
         System.out.println("Query SQL: " + sql);
         
@@ -52,20 +47,16 @@ public class AdminReporteSolicitud {
             int paramIndex = 1;
             if (fechaInicio != null) {
                 pstmt.setDate(paramIndex++, new java.sql.Date(fechaInicio.getTime()));
-                System.out.println("Parámetro fecha inicio: " + fechaInicio);
             }
             if (fechaFin != null) {
                 pstmt.setDate(paramIndex++, new java.sql.Date(fechaFin.getTime()));
-                System.out.println("Parámetro fecha fin: " + fechaFin);
             }
             if (!tipoSolicitud.equals("Todas las Solicitudes")) {
                 int categoriaId = obtenerIdCategoria(tipoSolicitud);
                 pstmt.setInt(paramIndex++, categoriaId);
-                System.out.println("Parámetro categoría ID: " + categoriaId);
             }
             
             ResultSet rs = pstmt.executeQuery();
-            System.out.println("Query ejecutado correctamente");
             
             if (rs.next()) {
                 int total = rs.getInt("total_solicitudes");
@@ -129,8 +120,6 @@ public class AdminReporteSolicitud {
                 return 3;
             case "Solicitud de Cuentas y Accesos": 
                 return 4;
-            case "Solicitud de Consultas Generales": 
-                return 5;
             default: 
                 System.out.println("Tipo de solicitud no reconocido: " + tipoSolicitud);
                 return 0;
@@ -140,10 +129,8 @@ public class AdminReporteSolicitud {
     public boolean validarFechas(Date fechaInicio, Date fechaFin) {
         if (fechaInicio != null && fechaFin != null) {
             boolean valido = !fechaInicio.after(fechaFin);
-            System.out.println("Validación fechas: " + valido);
             return valido;
         }
-        System.out.println("Validación fechas: true (alguna fecha es nula)");
         return true;
     }
 }

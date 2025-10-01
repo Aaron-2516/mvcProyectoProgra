@@ -33,9 +33,7 @@ public class AdminReporteSolicitudController {
         }
     }
     
-    private void generarReporte() {
-        System.out.println("=== BOTÓN GENERAR REPORTE PRESIONADO ===");
-        
+    private void generarReporte() {        
         try {
             // Obtener datos de la vista
             Date fechaInicio = view.getDateInicio().getDate();
@@ -76,9 +74,7 @@ public class AdminReporteSolicitudController {
     }
     
     private void crearGraficoSeguro(AdminReporteSolicitud.DatosReporte datos, String tipoSolicitud) {
-        try {
-            System.out.println("Creando gráfico con método seguro...");
-            
+        try {          
             // Crear dataset de manera más controlada
             DefaultCategoryDataset dataset = crearDatasetSeguro(datos);
             
@@ -104,9 +100,9 @@ public class AdminReporteSolicitudController {
             System.out.println("Gráfico creado exitosamente");
             
         } catch (Exception e) {
-            System.err.println("ERROR creando gráfico seguro: " + e.toString());
+            System.err.println("ERROR creando gráfico" + e.toString());
             // Intentar método alternativo
-            crearGraficoAlternativo(datos, tipoSolicitud);
+            crearGrafico(datos, tipoSolicitud);
         }
     }
     
@@ -128,9 +124,8 @@ public class AdminReporteSolicitudController {
         return dataset;
     }
     
-    private void crearGraficoAlternativo(AdminReporteSolicitud.DatosReporte datos, String tipoSolicitud) {
+    private void crearGrafico(AdminReporteSolicitud.DatosReporte datos, String tipoSolicitud) {
         try {
-            System.out.println("Usando método alternativo para gráfico...");
             
             // Dataset más simple
             DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -158,14 +153,12 @@ public class AdminReporteSolicitudController {
             mostrarGraficoEnPanel(chartPanel);
             
         } catch (Exception e) {
-            System.err.println("ERROR en método alternativo: " + e.toString());
             mostrarError("No se pudo crear el gráfico. Los datos pueden ser inválidos.");
             limpiarGrafico();
         }
     }
     
     private void mostrarGraficoEnPanel(ChartPanel chartPanel) {
-        // Ejecutar en el hilo de EDT para evitar problemas de concurrencia
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
