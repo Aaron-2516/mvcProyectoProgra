@@ -4,9 +4,8 @@
  */
 package VIEWS.Admin;
 
+import CONTROLLER.AdminReporteSolicitudController;
 import org.jdesktop.swingx.JXDatePicker;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 
 /**
@@ -15,6 +14,7 @@ import java.util.Date;
  */
 public class gestReporteSolicitud extends javax.swing.JPanel {
 
+    private AdminReporteSolicitudController controller;
     
     /**
      * Creates new form gestReporteSolicitud
@@ -22,6 +22,7 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
     public gestReporteSolicitud() {
         initComponents();
         configurarDatePickers();
+        controller = new AdminReporteSolicitudController(this);
     }
     
     //Validacion seleccion fecha maximo fecha actual
@@ -32,6 +33,27 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
     dateInicio.setFormats("dd/MM/yyyy");
     dateFin.setFormats("dd/MM/yyyy");
 }
+    
+    // Getters para que el controller pueda acceder a los componentes
+    public javax.swing.JButton getBtnGenerarReporte() {
+        return btnGenerarReporte;
+    }
+    
+    public javax.swing.JComboBox<String> getCmbTipoSolicitud() {
+        return cmbTipoSolicitud;
+    }
+    
+    public JXDatePicker getDateInicio() {
+        return dateInicio;
+    }
+    
+    public JXDatePicker getDateFin() {
+        return dateFin;
+    }
+    
+    public javax.swing.JPanel getJPanelGrafico() {
+        return jPanelGrafico;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +73,7 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         dateInicio = new org.jdesktop.swingx.JXDatePicker();
         dateFin = new org.jdesktop.swingx.JXDatePicker();
+        jPanelGrafico = new javax.swing.JPanel();
 
         txtReporteSolicitud.setBackground(new java.awt.Color(0, 0, 0));
         txtReporteSolicitud.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
@@ -66,7 +89,7 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
         txtTipoSolicitud.setText("Tipo de Solicitud:");
 
         cmbTipoSolicitud.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Solicitud de Informacion", "Solicitud de Soporte", "Solicitud de Permisos" }));
+        cmbTipoSolicitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitud de Hardware", "Solicitud de Software y Aplicaciones", "Solicitud de Redes y Conectividad", "Solicitud de Cuentas y Accesos", "Solicitud de Consultas Generales", "Todas las Solicitudes" }));
 
         btnGenerarReporte.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnGenerarReporte.setText("Generar Reporte");
@@ -88,6 +111,8 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
             }
         });
 
+        jPanelGrafico.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,16 +120,23 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGenerarReporte)
-                    .addComponent(cmbTipoSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTipoSolicitud)
-                    .addComponent(txtFechaFin)
-                    .addComponent(txtaFechaInicio)
-                    .addComponent(txtReporteSolicitud)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(503, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtReporteSolicitud)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(503, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTipoSolicitud)
+                            .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFechaFin)
+                            .addComponent(txtaFechaInicio)
+                            .addComponent(btnGenerarReporte)
+                            .addComponent(cmbTipoSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,22 +144,25 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addComponent(txtReporteSolicitud)
                 .addGap(18, 18, 18)
-                .addComponent(txtaFechaInicio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtFechaFin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(txtTipoSolicitud)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbTipoSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGenerarReporte)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtaFechaInicio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFechaFin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtTipoSolicitud)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbTipoSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnGenerarReporte))
+                    .addComponent(jPanelGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(152, 152, 152)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,6 +177,7 @@ public class gestReporteSolicitud extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXDatePicker dateFin;
     private org.jdesktop.swingx.JXDatePicker dateInicio;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelGrafico;
     private javax.swing.JLabel txtFechaFin;
     private javax.swing.JLabel txtReporteSolicitud;
     private javax.swing.JLabel txtTipoSolicitud;

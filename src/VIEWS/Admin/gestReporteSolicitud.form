@@ -19,17 +19,28 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="dateFin" min="-2" max="-2" attributes="0"/>
-                  <Component id="dateInicio" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnGenerarReporte" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbTipoSolicitud" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTipoSolicitud" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFechaFin" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtaFechaInicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtReporteSolicitud" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtReporteSolicitud" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="503" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtTipoSolicitud" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dateFin" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dateInicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFechaFin" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtaFechaInicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGenerarReporte" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbTipoSolicitud" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanelGrafico" min="-2" pref="500" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="503" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -39,22 +50,27 @@
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="txtReporteSolicitud" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="txtaFechaInicio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="dateInicio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="txtFechaFin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="dateFin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="txtTipoSolicitud" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="cmbTipoSolicitud" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnGenerarReporte" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="txtaFechaInicio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="dateInicio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="txtFechaFin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="dateFin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="txtTipoSolicitud" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cmbTipoSolicitud" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="btnGenerarReporte" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jPanelGrafico" min="-2" pref="328" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="159" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,11 +117,13 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Todas"/>
-            <StringItem index="1" value="Solicitud de Informacion"/>
-            <StringItem index="2" value="Solicitud de Soporte"/>
-            <StringItem index="3" value="Solicitud de Permisos"/>
+          <StringArray count="6">
+            <StringItem index="0" value="Solicitud de Hardware"/>
+            <StringItem index="1" value="Solicitud de Software y Aplicaciones"/>
+            <StringItem index="2" value="Solicitud de Redes y Conectividad"/>
+            <StringItem index="3" value="Solicitud de Cuentas y Accesos"/>
+            <StringItem index="4" value="Solicitud de Consultas Generales"/>
+            <StringItem index="5" value="Todas las Solicitudes"/>
           </StringArray>
         </Property>
       </Properties>
@@ -143,5 +161,11 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateFinActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JPanel" name="jPanelGrafico">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="false"/>
+      </Layout>
+    </Container>
   </SubComponents>
 </Form>
